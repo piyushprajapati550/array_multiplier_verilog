@@ -1,0 +1,53 @@
+`timescale 1ns / 1ps
+module array_multiplier_tb;
+// Inputs
+reg [7:0] a;
+reg [7:0] b;
+// Output
+wire [15:0] p;
+// DUT
+array_multiplier uut (
+    .a(a),
+    .b(b),
+    .p(p) );
+// Test Stimulus
+initial
+begin
+  $monitor("Time=%0t  A=%d  B=%d  Product=%d", $time, a, b, p);
+    // Test Case 1
+    a = 8'd3;
+    b = 8'd4;
+    #10;
+
+    // Test Case 2
+    a = 8'd10;
+    b = 8'd12;
+    #10;
+
+    // Test Case 3
+    a = 8'd15;
+    b = 8'd15;
+    #10;
+
+    // Test Case 4
+    a = 8'd25;
+    b = 8'd20;
+    #10;
+
+    // Test Case 5
+    a = 8'd52;
+    b = 8'd4;
+    #10;
+
+    // Test Case 6
+    a = 8'd100;
+    b = 8'd50;
+    #10;
+
+    // Test Case 7
+    a = 8'd255;
+    b = 8'd255;
+    #10;
+    $finish;
+end
+endmodule
